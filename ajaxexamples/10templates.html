@@ -1,0 +1,47 @@
+<html>
+<!--http://vard-lokkur.blogspot.com/2011/01/jquery-templates-and-json.html-->
+    <head>
+    	<style>
+		caption {font-weight:bold; color:red; font-size:larger}
+		</style>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(
+            function() { 
+                $("#ajax-trigger").click(
+                    function(event) {
+                       
+                        $.getJSON("10templates.php", { 'employerId' : 1}, 
+                            function(data) {
+                                $("#employerList").tmpl(data).appendTo("#ajax-target");
+                            });
+                    });
+            });
+		
+		
+		 
+        </script>
+        <script id="employerList" type="text/x-jquery-tmpl">            
+            {{tmpl(employer) "#employerTemplate"}}
+        </script>
+        <script id="employerTemplate" type="text/x-jquery-tmpl">
+            <h1>${businessName}</h1>
+            <table>
+                <caption>Employees</caption>
+                {{each(i, employee) employees}}{{tmpl(employee) "#employeeTemplate"}}{{/each}}
+            </table>
+        </script>
+        <script id="employeeTemplate" type="text/x-jquery-tmpl">
+            <tr>
+                <td>${firstName}</td>
+            </tr>        
+        </script>    
+    </head>
+    <body>
+    <h1>Example of <a href="http://api.jquery.com/category/plugins/templates/">jQuery Templates</a></h1>
+        <div><a href="javascript:void();" id="ajax-trigger">AJAX Templates</a></div>
+        <div id="ajax-target"></div> 
+        <div id="debug"></div>              
+    </body>
+</html>

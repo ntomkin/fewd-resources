@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>11 Json Eval</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script>
+$(document).ready(function(){
+	 myJSONtext = "{id : '0001',type : 'donut',name : 'Cake',	ppu : 0.55}";
+	 var myJSONObject = eval('(' + myJSONtext + ')');
+	
+	$('p#stringJson').html(myJSONtext);
+	
+	for ( var key in myJSONObject )
+		{	
+			$('#objectJson').append(
+				 key  
+				+ ':' 
+				+ myJSONObject[key] 
+				+ '<br>')
+		}
+					 
+}) ; 
+</script>
+</head>
+
+<body>
+<h1>Converting JSON strings manually with Eval</h1>
+<p>The JSON data represented as a string from the server</p>
+<p id='stringJson'></p>
+<p>The JSON data represented as an JS object</p>
+<p id='objectJson'></p>
+</body>
+</html>

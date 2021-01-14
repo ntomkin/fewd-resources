@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ex 7: AJAX calls returning JSON data         </title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">  
+$(document).ready(function(){
+	//Using the .post shortcut with 4 arguments
+	$('a:first').click(function(){
+		$('#choices').empty();
+		$.post(	'07postjson.php', 
+			{ act : 'provinces'},
+			function(data){
+				//Using JavaScript to iterate of JSON Object
+				for ( var key in data ) {
+					$('#choices').append('<option value='+ key +'>'+data[key] +'</option>')}
+				},
+				'json')	 			   
+				   });	
+	//Using the .getJson shortcut with two arguments
+	$('a:last').click(function(){
+		$('#choices').empty();
+		$.getJSON(	'07postjson.php?act=states', 
+			function(data){
+				//Using JQuery's .each Utility Function to iterate of JSON object
+				jQuery.each(data,function (key,val)
+					{$('#choices').append('<option value='+ key +'>'+ val +'</option>')})
+				} 
+				 )	 			   
+				   });
+	//Click this on start up 
+	$('a:first').click();	
+	});
+</script>
+<style>
+select {margin: 20px; display:block}
+</style>
+</head>
+
+<body>
+ 
+ 
+<h1>Ex 7: AJAX calls returning JSON data </h1>
+
+ 
+  <a href='#'>Browse by Province</a> |  
+  <a href='#'>Browse by Cities</a> 
+ 
+ 
+<select size="5" id='choices'></select>
+ 
+</body>
+</html>

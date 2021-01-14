@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ex. 8: JSON String and JavaScript Array Map</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">  
+	$(document).ready(function(){
+		 
+	 	//Example of a JavaScript Array Map
+		var  nameInObj  = {firstname: 'Charlie',lastname: 'Brown'}
+		//JSON is an Array Map represented as a STRING
+		var  nameInJSONString =  "{firstname: 'George',lastname: 'Bush'}";
+		//Eval converts the STRING into a JavaScript ARray Map
+		var nameJSONObj = eval('(' + nameInJSONString + ')');
+		$('a:first').click(function(){
+					 $('#msg').html(nameInObj.firstname + nameInObj['lastname']) 
+							   });
+		$('a:last').click(function(){
+					  $('#msg').html(nameJSONObj.firstname + nameJSONObj['lastname']) 
+							   });	
+			
+	});
+</script>
+ 
+</head>
+
+<body>
+
+ 
+<h1>Ex. 8: JSON String and JavaScript Array Map </h1>
+
+  	<a href='#'>Name In Object</a> | <a href='#'>Name In JSON String</a>
+	<p id='msg'></p>
+ 
+</body>
+</html>

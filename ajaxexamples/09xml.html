@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<title>Reading XML with jQuery</title>
+     <script>
+     	$(document).ready(function(){
+							   
+			$.ajax({
+				type: "GET",
+				url: "09xml.xml",
+				dataType: "xml",
+				success: function(xml) {
+					var outStr = "<ol>"	
+					$(xml).find('food').each(function(){
+						var name = $(this).find('name').text();
+						var mfr = $(this).find('mfr').text();
+						outStr  +=  '<li>' + name + ':' + mfr + '</li>' ; 
+					});
+					outStr += "</ol>"
+					$("h1").after(outStr);
+				}
+			});
+		
+			
+		});
+     </script>
+</head>
+<body>
+	  
+     	<h1>Reading XML with jQuery</h1>
+      
+     
+</body>
+</html>

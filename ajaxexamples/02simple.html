@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>02 - Ajax Simple Loader</title>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">  
+	$(document).ready(function(){
+		$('a:first').click(function(){
+			$('#content').load('02simpletext.html #lorem');
+		});
+		$('a:eq(1)').click(function(){
+			$('#content').load('02simpletext.html #poem');
+		});
+		$('a:last').click(function(){
+			$('#content').load('02simpletext.html #json');
+		});
+		$('a:first').click();
+	});
+</script>
+<style>
+a {border: 1px solid #EEE; color: white; background-color:#033; 
+	text-decoration:none; padding: 3px}
+a:hover {color:yellow}
+div#content {width:400px;  border: 1px solid #AAA; padding: 10px; margin: 10px}
+</style>
+</head>
+
+<body>
+<h1> Simple Ajax Loader Example 2</h1>
+
+<a href='#'>Lorem Ipsum</a> <a href='#'>Poetry</a>   <a href='#'>What is JSON?</a>
+
+<div id='content'></div>
+</body>
+</html>
